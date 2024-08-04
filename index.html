@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-learning Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>E-learning Platform</h1>
+        <nav>
+            <a href="/">Home</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('new_course') }}">Add Course</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        <section id="courses">
+            <h2>Courses</h2>
+            <div class="course-list">
+                {% for course in courses %}
+                <div class="course">
+                    <h3><a href="{{ url_for('course', course_id=course.id) }}">{{ course.title }}</a></h3>
+                    <p>{{ course.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 E-learning Platform</p>
+    </footer>
+</body>
+</html>
