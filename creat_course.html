@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Add Course</h1>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+    <main>
+        <section id="add-course">
+            <h2>Create a New Course</h2>
+            <form action="{{ url_for('new_course') }}" method="POST">
+                {{ form.hidden_tag() }}
+                <label for="title">Course Title:</label>
+                {{ form.title }}
+                <label for="description">Description:</label>
+                {{ form.description }}
+                <label for="content">Content:</label>
+                {{ form.content }}
+                {{ form.submit }}
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 E-learning Platform</p>
+    </footer>
+</body>
+</html>
